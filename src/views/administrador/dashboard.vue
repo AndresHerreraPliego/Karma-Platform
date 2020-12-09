@@ -142,7 +142,6 @@ export default {
 
   },
   data: () => ({
-
      donutoptions:{
       legend:{
         show: true

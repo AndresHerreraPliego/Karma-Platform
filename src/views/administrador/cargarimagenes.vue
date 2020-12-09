@@ -20,7 +20,7 @@
                                         </v-col>
 
                                         <v-col cols="12">
-                                            <v-file-input label="Seleccionar" multiple></v-file-input>
+                                            <v-file-input label="Seleccionar" multiple v-model="selectedimage"></v-file-input>
                                         </v-col>
 
                                         <v-col cols="12">
@@ -51,7 +51,7 @@
                                         </v-col>
 
                                          <v-col cols="12">
-                                                    <v-btn dark color="primary" @click="sheet=!sheet">
+                                                    <v-btn dark color="primary" @click="onsubmit">
                                                         Iniciar
                                                     </v-btn>
                                         </v-col>
@@ -68,13 +68,27 @@
     </v-bottom-sheet>
 </template>
 <script>
+import axios from 'axios';
 
 export default {
     name: 'cargarimagenes',
     data: () => ({
-        sheet: false
+        sheet: false,
+        selectedimage: null
     }),
     methods: {
+        async onsubmit(){
+   
+            let formData = new FormData();
+            formData.append("files", this.selectedimage);
+            const response = await axios.post('endpoint', formData, {
+                headers: {
+                "Content-Type": "multipart/form-data"
+                }
+            });
+            this.sheet=!this.sheet 
+
+        }
     
     }
 }
