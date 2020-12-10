@@ -1,5 +1,16 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <div>
+    <px-header/>
+    <px-nosotros />
+    </div>
 </template>
+
+<script>
+import PxNosotros from "@/components/PxNosotros";
+import PxHeader from '@/components/PxHeader';
+
+export default {
+  name: "Nosotros",
+  components: { PxNosotros,PxHeader },
+};
+</script>
